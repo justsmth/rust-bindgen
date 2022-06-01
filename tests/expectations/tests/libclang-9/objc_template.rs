@@ -26,7 +26,7 @@ impl Foo {
 }
 impl<ObjectType: 'static> IFoo<ObjectType> for Foo {}
 pub trait IFoo<ObjectType: 'static>: Sized + std::ops::Deref {
-    unsafe fn get(&self) -> u64
+    unsafe fn get(&self) -> id
     where
         <Self as std::ops::Deref>::Target: objc::Message + Sized,
     {
@@ -55,7 +55,7 @@ impl<KeyType: 'static, ObjectType: 'static>
 pub trait IFooMultiGeneric<KeyType: 'static, ObjectType: 'static>:
     Sized + std::ops::Deref
 {
-    unsafe fn objectForKey_(&self, key: u64) -> u64
+    unsafe fn objectForKey_(&self, key: id) -> id
     where
         <Self as std::ops::Deref>::Target: objc::Message + Sized,
     {
